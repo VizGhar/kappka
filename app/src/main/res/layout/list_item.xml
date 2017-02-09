@@ -53,6 +53,7 @@
             tools:text="Pekne z obidvou prsou" />
 
         <ImageView
+            android:id="@+id/item_image"
             android:padding="8dp"
             app:layout_column="2"
             app:layout_gravity="center_vertical"

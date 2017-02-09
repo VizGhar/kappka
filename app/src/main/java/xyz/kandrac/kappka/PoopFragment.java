@@ -26,7 +26,7 @@ public class PoopFragment extends Fragment {
         View result = inflater.inflate(R.layout.fragment_poop, container, false);
         recyclerView = (RecyclerView) result.findViewById(R.id.list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(new BabyAdapter(getActivity()));
+        recyclerView.setAdapter(new BabyAdapter(1, getActivity()));
         return result;
     }
 }

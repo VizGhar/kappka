@@ -4,4 +4,7 @@
     <string name="main_tab_eat">Papanie</string>
     <string name="main_tab_sleep">Spinkanie</string>
     <string name="main_tab_poop">Kakanie</string>
+
+    <string name="time_format">%s</string>
+    <string name="time_format_from_to">%1$s - %2$s</string>
 </resources>
