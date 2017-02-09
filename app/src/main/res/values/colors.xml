@@ -3,4 +3,11 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="best">#388e3c</color>
+    <color name="good">#afb42b</color>
+    <color name="average">#fbc02d</color>
+    <color name="bad">#f57c00</color>
+    <color name="worst">#d32f2f</color>
+
 </resources>
