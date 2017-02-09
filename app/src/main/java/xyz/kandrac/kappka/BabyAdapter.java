@@ -36,9 +36,11 @@ public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder> im
     private String[] selectionArguments = null;
 
 
-    public BabyAdapter(int loaderId, Activity activity) {
+    public BabyAdapter(int loaderId, Activity activity, String selectionString, String[] selectionArguments) {
         this.activity = activity;
         mLoaderId = loaderId;
+        this.selectionString = selectionString;
+        this.selectionArguments = selectionArguments;
     }
 
     @Override
@@ -80,14 +82,20 @@ public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder> im
     }
 
     @Override
+    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+        activity.getLoaderManager().restartLoader(mLoaderId, null, this);
+    }
+
+    @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         mCursor.moveToPosition(position);
 
         String description = mCursor.getString(mCursor.getColumnIndex(Contract.ActivityColumns.ACTIVITY_DESCRIPTION));
-        int type = mCursor.getType(mCursor.getColumnIndex(Contract.ActivityColumns.ACTIVITY_TYPE));
-        int score = mCursor.getType(mCursor.getColumnIndex(Contract.ActivityColumns.ACTIVITY_SCORE));
-        long from = mCursor.getType(mCursor.getColumnIndex(Contract.ActivityColumns.ACTIVITY_TIME_FROM));
-        long to = mCursor.getType(mCursor.getColumnIndex(Contract.ActivityColumns.ACTIVITY_TIME_TO));
+        int type = mCursor.getInt(mCursor.getColumnIndex(Contract.ActivityColumns.ACTIVITY_TYPE));
+        int score = mCursor.getInt(mCursor.getColumnIndex(Contract.ActivityColumns.ACTIVITY_SCORE));
+        long from = mCursor.getLong(mCursor.getColumnIndex(Contract.ActivityColumns.ACTIVITY_TIME_FROM));
+        long to = mCursor.getLong(mCursor.getColumnIndex(Contract.ActivityColumns.ACTIVITY_TIME_TO));
 
         holder.description.setText(description);
 
@@ -101,19 +109,19 @@ public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder> im
                 holder.indicator.setBackgroundColor(DisplayUtils.getColor(activity, R.color.unspecified));
                 break;
             case 1:
-                holder.indicator.setBackgroundColor(DisplayUtils.getColor(activity, R.color.worst));
+                holder.indicator.setBackgroundColor(DisplayUtils.getColor(activity, R.color.best));
                 break;
             case 2:
-                holder.indicator.setBackgroundColor(DisplayUtils.getColor(activity, R.color.bad));
+                holder.indicator.setBackgroundColor(DisplayUtils.getColor(activity, R.color.good));
                 break;
             case 3:
                 holder.indicator.setBackgroundColor(DisplayUtils.getColor(activity, R.color.average));
                 break;
             case 4:
-                holder.indicator.setBackgroundColor(DisplayUtils.getColor(activity, R.color.good));
+                holder.indicator.setBackgroundColor(DisplayUtils.getColor(activity, R.color.bad));
                 break;
             case 5:
-                holder.indicator.setBackgroundColor(DisplayUtils.getColor(activity, R.color.best));
+                holder.indicator.setBackgroundColor(DisplayUtils.getColor(activity, R.color.worst));
                 break;
         }
 

@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import xyz.kandrac.kappka.data.Contract;
+
 /**
  * Created by jan on 9.2.2017.
  */
@@ -26,7 +28,7 @@ public class EatFragment extends Fragment {
         View result = inflater.inflate(R.layout.fragment_eat, container, false);
         recyclerView = (RecyclerView) result.findViewById(R.id.list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(new BabyAdapter(2, getActivity()));
+        recyclerView.setAdapter(new BabyAdapter(0, getActivity(), Contract.ActivityColumns.ACTIVITY_TYPE + "=?", new String[]{"0"}));
         return result;
     }
 }

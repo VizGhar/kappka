@@ -81,11 +81,14 @@ public class DatabaseProvider extends ContentProvider {
     @Override
     public Uri insert(@NonNull Uri uri, ContentValues values) {
         SQLiteDatabase db = databaseHelper.getWritableDatabase();
+        Uri resultUrl;
 
         switch (uriMatcher.match(uri)) {
             case ACTIVITIES: {
                 long result = db.insert(Database.Tables.ACTIVITIES, null, values);
-                return Contract.Activities.buildActivityUri(result);
+                resultUrl = Contract.Activities.buildActivityUri(result);
+                getContext().getContentResolver().notifyChange(Contract.Activities.CONTENT_URI, null);
+                return resultUrl;
             }
             default:
                 throw new IllegalArgumentException("Unknown URI " + uri);

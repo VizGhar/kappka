@@ -110,6 +110,7 @@ public class AddFragment extends DialogFragment implements View.OnClickListener 
                 cv.put(Contract.ActivityColumns.ACTIVITY_TIME_TO, toCalendar.getTimeInMillis());
                 cv.put(Contract.ActivityColumns.ACTIVITY_TYPE, type);
                 getActivity().getContentResolver().insert(Contract.Activities.CONTENT_URI, cv);
+                dismiss();
                 break;
         }
     }
