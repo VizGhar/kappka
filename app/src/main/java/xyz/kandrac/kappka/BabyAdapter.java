@@ -13,13 +13,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
 import xyz.kandrac.kappka.data.Contract;
 import xyz.kandrac.kappka.utils.DisplayUtils;
+
+import static xyz.kandrac.kappka.utils.DateUtils.TIME_FORMAT;
 
 /**
  * Adapter for baby activity
@@ -27,8 +26,6 @@ import xyz.kandrac.kappka.utils.DisplayUtils;
  * Created by jan on 9.2.2017.
  */
 public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder> implements LoaderManager.LoaderCallbacks<Cursor> {
-
-    private static final DateFormat TIME_FORMAT = SimpleDateFormat.getTimeInstance(DateFormat.SHORT, Locale.getDefault());
 
     private Activity activity;
 
@@ -101,18 +98,21 @@ public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder> im
         // score set
         switch (score) {
             case 0:
-                holder.indicator.setBackgroundColor(DisplayUtils.getColor(activity, R.color.worst));
+                holder.indicator.setBackgroundColor(DisplayUtils.getColor(activity, R.color.unspecified));
                 break;
             case 1:
-                holder.indicator.setBackgroundColor(DisplayUtils.getColor(activity, R.color.bad));
+                holder.indicator.setBackgroundColor(DisplayUtils.getColor(activity, R.color.worst));
                 break;
             case 2:
-                holder.indicator.setBackgroundColor(DisplayUtils.getColor(activity, R.color.average));
+                holder.indicator.setBackgroundColor(DisplayUtils.getColor(activity, R.color.bad));
                 break;
             case 3:
-                holder.indicator.setBackgroundColor(DisplayUtils.getColor(activity, R.color.good));
+                holder.indicator.setBackgroundColor(DisplayUtils.getColor(activity, R.color.average));
                 break;
             case 4:
+                holder.indicator.setBackgroundColor(DisplayUtils.getColor(activity, R.color.good));
+                break;
+            case 5:
                 holder.indicator.setBackgroundColor(DisplayUtils.getColor(activity, R.color.best));
                 break;
         }

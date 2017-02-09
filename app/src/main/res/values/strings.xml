@@ -7,4 +7,13 @@
 
     <string name="time_format">%s</string>
     <string name="time_format_from_to">%1$s - %2$s</string>
+
+    <string-array name="activity_score">
+        <item>Ohodnotenie aktivity</item>
+        <item>Veľmi dobré</item>
+        <item>Dobré</item>
+        <item>Priemerné</item>
+        <item>Horšie</item>
+        <item>Zlé</item>
+    </string-array>
 </resources>

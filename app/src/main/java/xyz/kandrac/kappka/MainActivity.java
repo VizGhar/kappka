@@ -1,8 +1,6 @@
 package xyz.kandrac.kappka;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,7 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ViewPager mViewPager;
 
@@ -23,14 +21,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        findViewById(R.id.fab).setOnClickListener(this);
 
         // set viewpager
         mViewPager = (ViewPager) findViewById(R.id.content_pager);
@@ -41,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
         tabs.setupWithViewPager(mViewPager);
     }
 
+    @Override
+    public void onClick(View view) {
+        AddFragment.getInstance(mViewPager.getCurrentItem()).show(getSupportFragmentManager(), null);
+    }
 
     private class TabPagerAdapter extends FragmentStatePagerAdapter {
 
@@ -66,11 +61,15 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public CharSequence getPageTitle(int position) {
-            switch (position){
-                case 0: return getString(R.string.main_tab_eat);
-                case 1: return getString(R.string.main_tab_sleep);
-                case 2: return getString(R.string.main_tab_poop);
-                default: return null;
+            switch (position) {
+                case 0:
+                    return getString(R.string.main_tab_eat);
+                case 1:
+                    return getString(R.string.main_tab_sleep);
+                case 2:
+                    return getString(R.string.main_tab_poop);
+                default:
+                    return null;
             }
         }
     }

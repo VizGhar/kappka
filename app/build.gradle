@@ -12,6 +12,7 @@ android {
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+        manifestPlaceholders = [databaseAuthority : "xyz.kandrac.kappka"]
         buildConfigField 'String', 'DATABASE_AUTHORITY', '"xyz.kandrac.kappka"'
 
     }
