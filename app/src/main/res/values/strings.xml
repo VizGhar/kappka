@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Kappka</string>
-    <string name="action_settings">Settings</string>
+
+    <string name="main_tab_eat">Papanie</string>
+    <string name="main_tab_sleep">Spinkanie</string>
+    <string name="main_tab_poop">Kakanie</string>
 </resources>
