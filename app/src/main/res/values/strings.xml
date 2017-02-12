@@ -11,14 +11,16 @@
     <string name="action_add_sleep">Sleeping</string>
     <string name="action_add_poop">Pooping</string>
     <string name="activity_description_hint">Describe activity (optional)</string>
-    <string name="activity_start_hint">začiatok</string>
-    <string name="activity_end_hint">koniec</string>
+    <string name="activity_start_hint">Activity start</string>
+    <string name="activity_end_hint">Activity end</string>
+    <string name="activity_time_hint">Activity time</string>
     <string name="action_save">Uložiť</string>
     <string name="action_filter">Filter</string>
 
     <string name="action_select_eat">Filter eating</string>
     <string name="action_select_sleep">Filter sleeping</string>
     <string name="action_select_poop">Filter pooping</string>
+    <string name="activity_start_hint_variant">Activity time</string>
 
     <string-array name="activity_score">
         <item>Ohodnotenie aktivity</item>

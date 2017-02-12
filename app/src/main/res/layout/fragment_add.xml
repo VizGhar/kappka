@@ -1,38 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    app:columnCount="3">
+
+    <TextView
+        android:id="@+id/activity_name"
+        style="@style/Base.TextAppearance.AppCompat.Medium"
+        android:layout_marginTop="8dp"
+        tools:text="@string/action_add_poop"
+        android:textColor="#000"
+        app:layout_columnSpan="3" />
 
     <EditText
         android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:ems="12"
-        android:hint="@string/activity_description_hint" />
+        android:hint="@string/activity_description_hint"
+        app:layout_columnSpan="3"
+        app:layout_gravity="center" />
 
     <Spinner
         android:id="@+id/score"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:entries="@array/activity_score" />
+        android:layout_marginTop="8dp"
+        android:entries="@array/activity_score"
+        app:layout_columnSpan="3"
+        app:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/activity_start_title"
+        android:layout_marginTop="8dp"
+        android:text="@string/activity_start_hint"
+        app:layout_columnSpan="3" />
+
+    <ImageButton
+        android:id="@+id/activity_start_minus"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:padding="8dp"
+        android:tint="#000"
+        app:layout_gravity="center_vertical"
+        app:srcCompat="@drawable/chevron_left" />
 
     <Button
         android:id="@+id/time_from"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/activity_start_hint" />
+        app:layout_columnWeight="1"
+        app:layout_gravity="fill"
+        tools:text="12.2. 18:45" />
+
+    <ImageButton
+        android:id="@+id/activity_start_plus"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:padding="8dp"
+        android:tint="#000"
+        app:layout_gravity="center_vertical"
+        app:srcCompat="@drawable/chevron_right" />
+
+
+    <TextView
+        android:id="@+id/activity_end_title"
+        android:layout_marginTop="8dp"
+        android:text="@string/activity_end_hint"
+        app:layout_columnSpan="3" />
+
+    <ImageButton
+        android:id="@+id/activity_end_minus"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:padding="8dp"
+        android:tint="#000"
+        app:layout_gravity="center_vertical"
+        app:srcCompat="@drawable/chevron_left" />
 
     <Button
         android:id="@+id/time_to"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/activity_end_hint" />
+        app:layout_gravity="fill"
+        tools:text="12.2. 18:45" />
+
+    <ImageButton
+        android:id="@+id/activity_end_plus"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:padding="8dp"
+        android:tint="#000"
+        app:layout_gravity="center_vertical"
+        app:srcCompat="@drawable/chevron_right" />
 
     <Button
         android:id="@+id/save"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/action_save" />
-</LinearLayout>
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        android:layout_marginTop="8dp"
+        android:text="@string/action_save"
+        app:layout_columnSpan="3"
+        app:layout_gravity="end" />
+
+</android.support.v7.widget.GridLayout>
