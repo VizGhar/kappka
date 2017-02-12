@@ -2,8 +2,13 @@ package xyz.kandrac.kappka.data;
 
 import android.net.Uri;
 import android.provider.BaseColumns;
+import android.support.annotation.IntDef;
+
+import java.lang.annotation.Retention;
 
 import xyz.kandrac.kappka.BuildConfig;
+
+import static java.lang.annotation.RetentionPolicy.SOURCE;
 
 /**
  * Created by jan on 9.2.2017.
@@ -33,6 +38,14 @@ public final class Contract {
 
 
     public static class Activities implements ActivityColumns {
+
+        public static final int ACTIVITY_EAT = 0;
+        public static final int ACTIVITY_SLEEP = 1;
+        public static final int ACTIVITY_POOP = 2;
+
+        @Retention(SOURCE)
+        @IntDef({ACTIVITY_EAT, ACTIVITY_SLEEP, ACTIVITY_POOP})
+        public @interface ActivityType{}
 
         public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().appendPath(PATH_ACTIVITIES).build();
         public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd.activities";

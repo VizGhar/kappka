@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_add_eat"
+        android:icon="@drawable/ic_spoon"
+        android:title="@string/action_add_eat" />
+
+    <item
+        android:id="@+id/action_add_sleep"
+        android:icon="@drawable/ic_sleep"
+        android:title="@string/action_add_sleep" />
+
+    <item
+        android:id="@+id/action_add_poop"
+        android:icon="@drawable/ic_poop"
+        android:title="@string/action_add_poop" />
+
+</menu>

@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="32dp">
+    android:padding="16dp">
 
     <EditText
         android:id="@+id/description"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Jak to šlo?" />
+        android:ems="12"
+        android:hint="@string/activity_description_hint" />
 
     <Spinner
         android:id="@+id/score"
@@ -18,20 +19,20 @@
         android:entries="@array/activity_score" />
 
     <Button
-        android:text="začiatok"
         android:id="@+id/time_from"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="@string/activity_start_hint" />
 
     <Button
-        android:text="koniec"
         android:id="@+id/time_to"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="@string/activity_end_hint" />
 
     <Button
         android:id="@+id/save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Uložiť" />
+        android:text="@string/action_save" />
 </LinearLayout>

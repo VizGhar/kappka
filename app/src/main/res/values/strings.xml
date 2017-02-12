@@ -7,6 +7,13 @@
 
     <string name="time_format">%s</string>
     <string name="time_format_from_to">%1$s - %2$s</string>
+    <string name="action_add_eat">Eating</string>
+    <string name="action_add_sleep">Sleeping</string>
+    <string name="action_add_poop">Pooping</string>
+    <string name="activity_description_hint">Describe activity (optional)</string>
+    <string name="activity_start_hint">začiatok</string>
+    <string name="activity_end_hint">koniec</string>
+    <string name="action_save">Uložiť</string>
 
     <string-array name="activity_score">
         <item>Ohodnotenie aktivity</item>

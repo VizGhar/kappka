@@ -17,12 +17,16 @@ import android.widget.TimePicker;
 import java.util.Calendar;
 
 import xyz.kandrac.kappka.data.Contract;
+import xyz.kandrac.kappka.data.Contract.Activities.ActivityType;
+
+import static android.view.View.GONE;
 
 /**
  * Created by jan on 9.2.2017.
  */
-
 public class AddFragment extends DialogFragment implements View.OnClickListener {
+
+    public static final String ARGUMENT_ACTIVITY_TYPE = "type";
 
     EditText description;
     Spinner score;
@@ -36,10 +40,10 @@ public class AddFragment extends DialogFragment implements View.OnClickListener 
     int timeToMinute;
     int type;
 
-    public static AddFragment getInstance(int activityType) {
+    public static AddFragment getInstance(@ActivityType int activityType) {
         AddFragment result = new AddFragment();
         Bundle args = new Bundle();
-        args.putInt("type", activityType);
+        args.putInt(ARGUMENT_ACTIVITY_TYPE, activityType);
         result.setArguments(args);
         return result;
     }
@@ -47,7 +51,7 @@ public class AddFragment extends DialogFragment implements View.OnClickListener 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        type = getArguments().getInt("type");
+        type = getArguments().getInt(ARGUMENT_ACTIVITY_TYPE);
     }
 
     @Nullable
@@ -67,6 +71,10 @@ public class AddFragment extends DialogFragment implements View.OnClickListener 
         timeFrom.setOnClickListener(this);
         timeTo.setOnClickListener(this);
         save.setOnClickListener(this);
+
+        if (type == Contract.Activities.ACTIVITY_EAT || type == Contract.Activities.ACTIVITY_POOP) {
+            timeTo.setVisibility(GONE);
+        }
     }
 
     @Override

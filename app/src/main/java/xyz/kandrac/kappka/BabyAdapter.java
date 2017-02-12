@@ -48,11 +48,11 @@ public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder> im
         // handle only set loader, because you can receive other loader calls from same activity
         if (id == mLoaderId) {
             return new CursorLoader(
-                    activity,                          // activity required for cursor loading
+                    activity,                           // activity required for cursor loading
                     Contract.Activities.CONTENT_URI,    //
                     null,                               // static projection columns, cannot be edited
-                    selectionString,               // static selection string from initialization
-                    selectionArguments,            // dynamically updated selection arguments
+                    selectionString,                    // static selection string from initialization
+                    selectionArguments,                 // dynamically updated selection arguments
                     null);
         } else {
             return null;

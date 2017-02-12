@@ -68,41 +68,19 @@
 
         </LinearLayout>
 
-        <android.support.design.widget.TabLayout
-            android:id="@+id/main_tab_holder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <android.support.design.widget.TabItem
-                android:id="@+id/main_tab_eat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/main_tab_eat" />
-
-            <android.support.design.widget.TabItem
-                android:id="@+id/main_tab_sleep"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/main_tab_sleep" />
-
-            <android.support.design.widget.TabItem
-                android:id="@+id/main_tab_poop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/main_tab_poop" />
-
-        </android.support.design.widget.TabLayout>
-
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/content_main" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+    <io.github.yavski.fabspeeddial.FabSpeedDial
+        android:id="@+id/fab_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/ic_add" />
+        app:fabGravity="bottom_end"
+        app:fabMenu="@menu/menu_add"
+        app:miniFabBackgroundTint="@android:color/white"
+        app:miniFabDrawableTint="?attr/colorPrimaryDark"
+        app:miniFabTitleTextColor="?attr/colorPrimaryDark" />
 
 </android.support.design.widget.CoordinatorLayout>
