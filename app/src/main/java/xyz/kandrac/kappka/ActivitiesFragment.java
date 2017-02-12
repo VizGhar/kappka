@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import xyz.kandrac.kappka.data.Contract.Activities.ActivityType;
+
 /**
  * Created by jan on 9.2.2017.
  */
@@ -34,5 +36,9 @@ public class ActivitiesFragment extends Fragment {
 
     public void setDateRange(long dateFrom, long dateTo) {
         adapter.setDateRange(dateFrom, dateTo);
+    }
+
+    public void setType(@ActivityType int type) {
+        adapter.setType(type);
     }
 }

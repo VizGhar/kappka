@@ -7,15 +7,18 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import xyz.kandrac.kappka.data.Contract;
+import xyz.kandrac.kappka.data.Contract.Activities.ActivityType;
 import xyz.kandrac.kappka.utils.DisplayUtils;
 
 import static xyz.kandrac.kappka.utils.DateUtils.TIME_FORMAT;
@@ -35,6 +38,9 @@ public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder> im
     private String selectionString = null;
     private String[] selectionArguments = null;
 
+    private String dateFromText;
+    private String dateToText;
+    private String typeText;
 
     public BabyAdapter(int loaderId, Activity activity, String selectionString, String[] selectionArguments) {
         this.activity = activity;
@@ -144,8 +150,39 @@ public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder> im
     }
 
     public void setDateRange(long dateFrom, long dateTo) {
-        selectionString = Contract.ActivityColumns.ACTIVITY_TIME_FROM + " >= ? AND " + Contract.ActivityColumns.ACTIVITY_TIME_FROM + " <= ?";
-        selectionArguments = new String[]{Long.toString(dateFrom), Long.toString(dateTo)};
+        dateFromText = Long.toString(dateFrom);
+        dateToText = Long.toString(dateTo);
+        reset();
+    }
+
+    public void setType(@ActivityType int type) {
+        typeText = Integer.toString(type);
+        reset();
+    }
+
+    private void reset() {
+        StringBuilder selection = new StringBuilder();
+        ArrayList<String> selectionArgs = new ArrayList<>();
+
+        if (!TextUtils.isEmpty(dateFromText) && !TextUtils.isEmpty(dateToText)) {
+
+            selection.append(Contract.ActivityColumns.ACTIVITY_TIME_FROM + " >= ?");
+            selection.append(" AND " + Contract.ActivityColumns.ACTIVITY_TIME_FROM + " <= ?");
+
+            selectionArgs.add(dateFromText);
+            selectionArgs.add(dateToText);
+        }
+
+        if (!TextUtils.isEmpty(typeText)) {
+            if (selection.length() > 0) {
+                selection.append(" AND ");
+            }
+            selection.append(Contract.ActivityColumns.ACTIVITY_TYPE + " = ?");
+            selectionArgs.add(typeText);
+        }
+
+        selectionString = selection.toString();
+        selectionArguments = selectionArgs.toArray(new String[0]);
         activity.getLoaderManager().restartLoader(mLoaderId, null, this);
     }
 

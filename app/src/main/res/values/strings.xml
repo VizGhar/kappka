@@ -14,6 +14,11 @@
     <string name="activity_start_hint">začiatok</string>
     <string name="activity_end_hint">koniec</string>
     <string name="action_save">Uložiť</string>
+    <string name="action_filter">Filter</string>
+
+    <string name="action_select_eat">Filter eating</string>
+    <string name="action_select_sleep">Filter sleeping</string>
+    <string name="action_select_poop">Filter pooping</string>
 
     <string-array name="activity_score">
         <item>Ohodnotenie aktivity</item>

@@ -6,6 +6,7 @@ import android.support.design.internal.NavigationMenu;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -77,6 +78,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             fragment = ActivitiesFragment.getInstance();
             getSupportFragmentManager().beginTransaction().add(R.id.content, fragment).commit();
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_select_eat:
+                fragment.setType(Contract.Activities.ACTIVITY_EAT);
+                return true;
+            case R.id.action_select_sleep:
+                fragment.setType(Contract.Activities.ACTIVITY_SLEEP);
+                return true;
+            case R.id.action_select_poop:
+                fragment.setType(Contract.Activities.ACTIVITY_POOP);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
