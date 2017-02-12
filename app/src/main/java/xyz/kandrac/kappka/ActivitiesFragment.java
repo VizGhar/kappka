@@ -41,4 +41,8 @@ public class ActivitiesFragment extends Fragment {
     public void setType(@ActivityType int type) {
         adapter.setType(type);
     }
+
+    public void clearType() {
+        adapter.clearType();
+    }
 }

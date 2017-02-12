@@ -186,6 +186,11 @@ public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder> im
         activity.getLoaderManager().restartLoader(mLoaderId, null, this);
     }
 
+    public void clearType() {
+        typeText = null;
+        reset();
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView time;

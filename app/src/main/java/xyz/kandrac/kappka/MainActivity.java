@@ -89,6 +89,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.action_select_clear: {
+                fragment.clearType();
+                return true;
+            }
             case R.id.action_select_eat:
                 fragment.setType(Contract.Activities.ACTIVITY_EAT);
                 return true;

@@ -9,6 +9,9 @@
         app:showAsAction="ifRoom">
         <menu>
             <item
+                android:id="@+id/action_select_clear"
+                android:title="@string/action_select_clear" />
+            <item
                 android:id="@+id/action_select_eat"
                 android:title="@string/action_select_eat" />
             <item
