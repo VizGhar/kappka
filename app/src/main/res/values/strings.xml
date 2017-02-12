@@ -22,6 +22,9 @@
     <string name="action_select_sleep">Filter sleeping</string>
     <string name="action_select_poop">Filter pooping</string>
     <string name="action_select_clear">Clear filter</string>
+    <string name="action_delete">Delete Action</string>
+    <string name="delete_activity">Do you want to delete this activity?</string>
+    <string name="action_cancel">Cancel</string>
 
     <string-array name="activity_score">
         <item>Ohodnotenie aktivity</item>

@@ -3,9 +3,11 @@ package xyz.kandrac.kappka;
 import android.app.Activity;
 import android.app.LoaderManager;
 import android.content.CursorLoader;
+import android.content.DialogInterface;
 import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -101,6 +103,7 @@ public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder> im
         mCursor.moveToPosition(position);
 
         String description = mCursor.getString(mCursor.getColumnIndex(Contract.ActivityColumns.ACTIVITY_DESCRIPTION));
+        final long id = mCursor.getLong(mCursor.getColumnIndex(Contract.ActivityColumns.ACTIVITY_ID));
         int type = mCursor.getInt(mCursor.getColumnIndex(Contract.ActivityColumns.ACTIVITY_TYPE));
         int score = mCursor.getInt(mCursor.getColumnIndex(Contract.ActivityColumns.ACTIVITY_SCORE));
         long from = mCursor.getLong(mCursor.getColumnIndex(Contract.ActivityColumns.ACTIVITY_TIME_FROM));
@@ -145,6 +148,22 @@ public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder> im
                 holder.image.setImageResource(R.drawable.ic_poop);
                 break;
         }
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new AlertDialog.Builder(activity)
+                        .setTitle(R.string.action_delete)
+                        .setMessage(R.string.delete_activity)
+                        .setNegativeButton(R.string.action_cancel, null)
+                        .setPositiveButton(R.string.action_delete, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                activity.getContentResolver().delete(Contract.Activities.buildActivityUri(id), null, null);
+                            }
+                        }).show();
+            }
+        });
     }
 
     @Override
