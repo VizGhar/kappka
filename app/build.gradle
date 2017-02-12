@@ -1,4 +1,9 @@
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
 
 android {
     compileSdkVersion 25
@@ -12,7 +17,6 @@ android {
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        manifestPlaceholders = [databaseAuthority : "xyz.kandrac.kappka"]
         buildConfigField 'String', 'DATABASE_AUTHORITY', '"xyz.kandrac.kappka"'
 
     }
@@ -35,14 +39,24 @@ android {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            manifestPlaceholders = [databaseAuthority: "xyz.kandrac.kappka"]
         }
         debug {
             applicationIdSuffix ".debug"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            manifestPlaceholders = [databaseAuthority: "xyz.kandrac.kappka.debug",
+                                    crashlyticsApiKey: project.property("crashlyticsApiKey").toString()]
+
+            ext {
+                betaDistributionReleaseNotesFilePath="app/crashlyticsAssets/beta_distribution_release_notes.txt"
+                betaDistributionEmailsFilePath="app/crashlyticsAssets/beta_distribution_emails.txt"
+            }
+
         }
     }
 }
+
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -55,5 +69,8 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
     compile 'com.android.support:design:25.1.1'
     compile 'io.github.yavski:fab-speed-dial:1.0.6'
+    compile('com.crashlytics.sdk.android:crashlytics:2.6.6@aar') {
+        transitive = true;
+    }
     testCompile 'junit:junit:4.12'
 }

@@ -2,11 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="xyz.kandrac.kappka">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:name=".Kappka"
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
@@ -25,6 +28,10 @@
             android:authorities="${databaseAuthority}"
             android:exported="false" />
 
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="${crashlyticsApiKey}"
+            />
     </application>
 
 </manifest>
