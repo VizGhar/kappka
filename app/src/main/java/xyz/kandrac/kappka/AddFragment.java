@@ -108,6 +108,7 @@ public class AddFragment extends DialogFragment implements View.OnClickListener 
         timeFrom.setOnClickListener(this);
         timeTo.setOnClickListener(this);
         save.setOnClickListener(this);
+
         activity_end_minus.setOnClickListener(this);
         activity_end_plus.setOnClickListener(this);
         activity_start_minus.setOnClickListener(this);
@@ -163,9 +164,11 @@ public class AddFragment extends DialogFragment implements View.OnClickListener 
                 break;
             case R.id.activity_end_minus:
                 timeToCalendar.add(Calendar.DAY_OF_YEAR, -1);
+                resetToButton();
                 break;
             case R.id.activity_end_plus:
                 timeToCalendar.add(Calendar.DAY_OF_YEAR, 1);
+                resetToButton();
                 break;
             case R.id.activity_start_minus:
                 timeFromCalendar.add(Calendar.DAY_OF_YEAR, -1);
