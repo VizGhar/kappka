@@ -32,6 +32,7 @@ import static android.view.View.GONE;
 public class AddFragment extends DialogFragment implements View.OnClickListener {
 
     public static final String ARGUMENT_ACTIVITY_TYPE = "type";
+    public static final String ARGUMENT_TIME = "time";
 
 
     TextView activityName;
@@ -53,10 +54,11 @@ public class AddFragment extends DialogFragment implements View.OnClickListener 
 
     int type;
 
-    public static AddFragment getInstance(@ActivityType int activityType) {
+    public static AddFragment getInstance(@ActivityType int activityType, long displayTime) {
         AddFragment result = new AddFragment();
         Bundle args = new Bundle();
         args.putInt(ARGUMENT_ACTIVITY_TYPE, activityType);
+        args.putLong(ARGUMENT_TIME, displayTime);
         result.setArguments(args);
         return result;
     }
@@ -65,6 +67,19 @@ public class AddFragment extends DialogFragment implements View.OnClickListener 
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         type = getArguments().getInt(ARGUMENT_ACTIVITY_TYPE);
+
+        long time = getArguments().getLong(ARGUMENT_TIME);
+        Calendar display = Calendar.getInstance();
+        display.setTimeInMillis(time);
+
+        timeFromCalendar = Calendar.getInstance();
+        timeToCalendar = Calendar.getInstance();
+
+        timeFromCalendar.set(Calendar.DAY_OF_MONTH, display.get(Calendar.DAY_OF_MONTH));
+        timeFromCalendar.set(Calendar.MONTH, display.get(Calendar.MONTH));
+        timeFromCalendar.set(Calendar.YEAR, display.get(Calendar.YEAR));
+
+        timeToCalendar.setTimeInMillis(timeFromCalendar.getTimeInMillis());
     }
 
     @Nullable
@@ -88,8 +103,6 @@ public class AddFragment extends DialogFragment implements View.OnClickListener 
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        timeFromCalendar = Calendar.getInstance();
-        timeToCalendar = Calendar.getInstance();
 
         activityName.setText(getActivityName(type, getActivity()));
         timeFrom.setOnClickListener(this);

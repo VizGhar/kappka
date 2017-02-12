@@ -53,15 +53,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 int id = menuItem.getItemId();
                 switch (id) {
                     case R.id.action_add_eat: {
-                        AddFragment.getInstance(Contract.Activities.ACTIVITY_EAT).show(getSupportFragmentManager(), null);
+                        AddFragment.getInstance(Contract.Activities.ACTIVITY_EAT, displayTime).show(getSupportFragmentManager(), null);
                         break;
                     }
                     case R.id.action_add_sleep: {
-                        AddFragment.getInstance(Contract.Activities.ACTIVITY_SLEEP).show(getSupportFragmentManager(), null);
+                        AddFragment.getInstance(Contract.Activities.ACTIVITY_SLEEP, displayTime).show(getSupportFragmentManager(), null);
                         break;
                     }
                     case R.id.action_add_poop: {
-                        AddFragment.getInstance(Contract.Activities.ACTIVITY_POOP).show(getSupportFragmentManager(), null);
+                        AddFragment.getInstance(Contract.Activities.ACTIVITY_POOP, displayTime).show(getSupportFragmentManager(), null);
                         break;
                     }
                 }
