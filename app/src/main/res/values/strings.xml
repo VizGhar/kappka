@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Kappka</string>
 
-    <string name="main_tab_eat">Papanie</string>
-    <string name="main_tab_sleep">Spinkanie</string>
-    <string name="main_tab_poop">Kakanie</string>
+    <string name="main_tab_eat">Eating</string>
+    <string name="main_tab_sleep">Sleeping</string>
+    <string name="main_tab_poop">Pooping</string>
 
     <string name="time_format">%s</string>
     <string name="time_format_from_to">%1$s - %2$s</string>
@@ -14,15 +14,14 @@
     <string name="activity_start_hint">Activity start</string>
     <string name="activity_start_hint_variant">Activity time</string>
     <string name="activity_end_hint">Activity end</string>
-    <string name="activity_time_hint">Activity time</string>
-    <string name="action_save">Uložiť</string>
+    <string name="action_save">Save</string>
     <string name="action_filter">Filter</string>
 
     <string name="action_select_eat">Filter eating</string>
     <string name="action_select_sleep">Filter sleeping</string>
     <string name="action_select_poop">Filter pooping</string>
     <string name="action_select_clear">Clear filter</string>
-    <string name="action_delete">Delete Action</string>
+    <string name="action_delete">Delete</string>
     <string name="delete_activity">Do you want to delete this activity?</string>
     <string name="action_cancel">Cancel</string>
 

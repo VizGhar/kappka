@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kappka</string>
+    <string name="time_format">%s</string>
+    <string name="time_format_from_to">%1$s - %2$s</string>
+    <string name="action_add_eat">Papanie</string>
+    <string name="action_add_poop">Kakanie</string>
+    <string name="action_add_sleep">Spinkanie</string>
+    <string name="action_cancel">Zrušiť</string>
+    <string name="action_delete">Zmazať</string>
+    <string name="action_filter">Filter</string>
+    <string name="action_save">Uložiť</string>
+    <string name="action_select_clear">Vymazať filter</string>
+    <string name="action_select_eat">Iba papanie</string>
+    <string name="action_select_poop">Iba kakanie</string>
+    <string name="action_select_sleep">Iba spinkanie</string>
+    <string name="activity_description_hint">Popis činnosti (nepovinné)</string>
+    <string name="activity_end_hint">Koniec činnosti</string>
+    <string name="activity_start_hint">Začiatok činnosti</string>
+    <string name="activity_start_hint_variant">Čas činnosti</string>
+    <string name="activity_time_hint"></string>
+    <string name="delete_activity">Chcete vymazať túto činnosť?</string>
+    <string name="main_tab_eat">Papanie</string>
+    <string name="main_tab_poop">Kakanie</string>
+    <string name="main_tab_sleep">Spinkanie</string>
+</resources>
