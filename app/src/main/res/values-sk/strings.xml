@@ -18,9 +18,17 @@
     <string name="activity_end_hint">Koniec činnosti</string>
     <string name="activity_start_hint">Začiatok činnosti</string>
     <string name="activity_start_hint_variant">Čas činnosti</string>
-    <string name="activity_time_hint"></string>
     <string name="delete_activity">Chcete vymazať túto činnosť?</string>
     <string name="main_tab_eat">Papanie</string>
     <string name="main_tab_poop">Kakanie</string>
     <string name="main_tab_sleep">Spinkanie</string>
+
+    <string-array name="activity_score">
+        <item>Ohodnotenie aktivity</item>
+        <item>Veľmi dobré</item>
+        <item>Dobré</item>
+        <item>Priemerné</item>
+        <item>Horšie</item>
+        <item>Zlé</item>
+    </string-array>
 </resources>

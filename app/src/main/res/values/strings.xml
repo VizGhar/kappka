@@ -26,11 +26,11 @@
     <string name="action_cancel">Cancel</string>
 
     <string-array name="activity_score">
-        <item>Ohodnotenie aktivity</item>
-        <item>Veľmi dobré</item>
-        <item>Dobré</item>
-        <item>Priemerné</item>
-        <item>Horšie</item>
-        <item>Zlé</item>
+        <item>Activity rating</item>
+        <item>Excellent</item>
+        <item>Good</item>
+        <item>Average</item>
+        <item>Below average</item>
+        <item>Bad</item>
     </string-array>
 </resources>

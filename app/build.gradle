@@ -16,8 +16,28 @@ android {
         buildConfigField 'String', 'DATABASE_AUTHORITY', '"xyz.kandrac.kappka"'
 
     }
+
+    signingConfigs {
+        //noinspection GroovyMissingReturnStatement
+        release {
+            if (System.getenv("KANDRAC_KEYSTORE") != null)
+                storeFile file(System.getenv("KANDRAC_KEYSTORE"))
+            if (System.getenv("KANDRAC_KEYSTORE_PASS") != null)
+                storePassword System.getenv("KANDRAC_KEYSTORE_PASS")
+            if (System.getenv("KAPPKA_KEY_ALIAS") != null)
+                keyAlias System.getenv("KAPPKA_KEY_ALIAS")
+            if (System.getenv("KAPPKA_KEY_PASS") != null)
+                keyPassword System.getenv("KAPPKA_KEY_PASS")
+        }
+    }
+
     buildTypes {
         release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            applicationIdSuffix ".debug"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
