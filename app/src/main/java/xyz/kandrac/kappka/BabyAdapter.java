@@ -19,6 +19,7 @@ import java.util.Date;
 
 import xyz.kandrac.kappka.data.Contract;
 import xyz.kandrac.kappka.data.Contract.Activities.ActivityType;
+import xyz.kandrac.kappka.utils.DateUtils;
 import xyz.kandrac.kappka.utils.DisplayUtils;
 
 import static xyz.kandrac.kappka.utils.DateUtils.TIME_FORMAT;
@@ -42,11 +43,13 @@ public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder> im
     private String dateToText;
     private String typeText;
 
-    public BabyAdapter(int loaderId, Activity activity, String selectionString, String[] selectionArguments) {
+    public BabyAdapter(int loaderId, Activity activity) {
+        long time = DateUtils.getCurrentDateMilis();
         this.activity = activity;
         mLoaderId = loaderId;
-        this.selectionString = selectionString;
-        this.selectionArguments = selectionArguments;
+        dateFromText = Long.toString(time);
+        dateToText = Long.toString(DateUtils.incrementDate(time));
+        comupteArgs();
     }
 
     @Override
@@ -152,15 +155,17 @@ public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder> im
     public void setDateRange(long dateFrom, long dateTo) {
         dateFromText = Long.toString(dateFrom);
         dateToText = Long.toString(dateTo);
+        comupteArgs();
         reset();
     }
 
     public void setType(@ActivityType int type) {
         typeText = Integer.toString(type);
+        comupteArgs();
         reset();
     }
 
-    private void reset() {
+    private void comupteArgs() {
         StringBuilder selection = new StringBuilder();
         ArrayList<String> selectionArgs = new ArrayList<>();
 
@@ -183,11 +188,15 @@ public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder> im
 
         selectionString = selection.toString();
         selectionArguments = selectionArgs.toArray(new String[0]);
+    }
+
+    private void reset() {
         activity.getLoaderManager().restartLoader(mLoaderId, null, this);
     }
 
     public void clearType() {
         typeText = null;
+        comupteArgs();
         reset();
     }
 

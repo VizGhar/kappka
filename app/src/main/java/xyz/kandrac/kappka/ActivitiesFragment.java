@@ -27,7 +27,7 @@ public class ActivitiesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View result = inflater.inflate(R.layout.fragment_eat, container, false);
-        adapter = new BabyAdapter(0, getActivity(), null, null);
+        adapter = new BabyAdapter(0, getActivity());
         recyclerView = (RecyclerView) result.findViewById(R.id.list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter);
