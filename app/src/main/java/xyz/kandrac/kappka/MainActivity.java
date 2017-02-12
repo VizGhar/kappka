@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
         if (savedInstanceState == null) {
-            fragment = new ActivitiesFragment();
+            fragment = ActivitiesFragment.getInstance();
             getSupportFragmentManager().beginTransaction().add(R.id.content, fragment).commit();
         }
     }
@@ -83,12 +83,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.main_date_increment:
-                displayTime = DateUtils.incrementDate(displayTime);
-                date.setText(DateUtils.getDateFormatted(displayTime));
+                setDate(DateUtils.incrementDate(displayTime));
                 break;
             case R.id.main_date_decrement:
-                displayTime = DateUtils.decrementDate(displayTime);
-                date.setText(DateUtils.getDateFormatted(displayTime));
+                setDate(DateUtils.decrementDate(displayTime));
                 break;
             case R.id.main_date:
                 Calendar calendar = Calendar.getInstance();
@@ -100,11 +98,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         c.set(Calendar.YEAR, year);
                         c.set(Calendar.MONTH, month);
                         c.set(Calendar.DAY_OF_MONTH, day);
-                        displayTime = c.getTimeInMillis();
-                        date.setText(DateUtils.getDateFormatted(displayTime));
+                        setDate(c.getTimeInMillis());
                     }
                 }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
                 break;
         }
+    }
+
+    private void setDate(long time) {
+        displayTime = time;
+        date.setText(DateUtils.getDateFormatted(displayTime));
+        fragment.setDateRange(displayTime, DateUtils.incrementDate(displayTime));
     }
 }

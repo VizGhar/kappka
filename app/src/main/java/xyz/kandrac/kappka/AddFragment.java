@@ -115,7 +115,8 @@ public class AddFragment extends DialogFragment implements View.OnClickListener 
                 cv.put(Contract.ActivityColumns.ACTIVITY_DESCRIPTION, description.getText().toString());
                 cv.put(Contract.ActivityColumns.ACTIVITY_SCORE, score.getSelectedItemPosition());
                 cv.put(Contract.ActivityColumns.ACTIVITY_TIME_FROM, fromCalendar.getTimeInMillis());
-                cv.put(Contract.ActivityColumns.ACTIVITY_TIME_TO, toCalendar.getTimeInMillis());
+                if (type == Contract.Activities.ACTIVITY_SLEEP)
+                    cv.put(Contract.ActivityColumns.ACTIVITY_TIME_TO, toCalendar.getTimeInMillis());
                 cv.put(Contract.ActivityColumns.ACTIVITY_TYPE, type);
                 getActivity().getContentResolver().insert(Contract.Activities.CONTENT_URI, cv);
                 dismiss();

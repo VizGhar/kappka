@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 public class ActivitiesFragment extends Fragment {
 
     RecyclerView recyclerView;
+    BabyAdapter adapter;
 
     public static ActivitiesFragment getInstance() {
         return new ActivitiesFragment();
@@ -24,9 +25,14 @@ public class ActivitiesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View result = inflater.inflate(R.layout.fragment_eat, container, false);
+        adapter = new BabyAdapter(0, getActivity(), null, null);
         recyclerView = (RecyclerView) result.findViewById(R.id.list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(new BabyAdapter(0, getActivity(), null, null));
+        recyclerView.setAdapter(adapter);
         return result;
+    }
+
+    public void setDateRange(long dateFrom, long dateTo) {
+        adapter.setDateRange(dateFrom, dateTo);
     }
 }

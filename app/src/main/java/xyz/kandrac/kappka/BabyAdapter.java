@@ -143,6 +143,12 @@ public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder> im
         return mCursor == null ? 0 : mCursor.getCount();
     }
 
+    public void setDateRange(long dateFrom, long dateTo) {
+        selectionString = Contract.ActivityColumns.ACTIVITY_TIME_FROM + " >= ? AND " + Contract.ActivityColumns.ACTIVITY_TIME_FROM + " <= ?";
+        selectionArguments = new String[]{Long.toString(dateFrom), Long.toString(dateTo)};
+        activity.getLoaderManager().restartLoader(mLoaderId, null, this);
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView time;
