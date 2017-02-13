@@ -26,6 +26,12 @@
     <string name="action_cancel">Cancel</string>
     <string name="invalid_time">Incorrect times specified. Check start and end times</string>
 
+    <string name="action_feedback">Send Feedback</string>
+    <string name="feedback_message">Here you can post any suggestion you have in your mind. I\'ll do my best to pick the reasonable ones and incorporate them into the Kappka. Thank you.</string>
+    <string name="feedback_title">Send feedback</string>
+    <string name="action_send">Send</string>
+    <string name="feedback_thanks">Your feedback has been sent</string>
+
     <string-array name="activity_score">
         <item>Activity rating</item>
         <item>Excellent</item>

@@ -32,4 +32,10 @@
         <item>Horšie</item>
         <item>Zlé</item>
     </string-array>
+
+    <string name="action_feedback">Pošli spätnú väzbu</string>
+    <string name="action_send">Poslať</string>
+    <string name="feedback_message">Tu môžete napísať akékoľvek návrhy a zlepšenia. Budem sa snažiť najdôležitejšie z nich zahrnúť do ďalších verzií Kappky. Ďakujem.</string>
+    <string name="feedback_thanks">Vaša spätná väzba bola odoslaná</string>
+    <string name="feedback_title">Poslať spätnú väzbu</string>
 </resources>

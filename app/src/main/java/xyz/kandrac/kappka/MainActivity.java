@@ -1,9 +1,11 @@
 package xyz.kandrac.kappka;
 
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.internal.NavigationMenu;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -11,12 +13,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
 
 import io.github.yavski.fabspeeddial.FabSpeedDial;
 import io.github.yavski.fabspeeddial.SimpleMenuListenerAdapter;
 import xyz.kandrac.kappka.data.Contract;
+import xyz.kandrac.kappka.data.firebase.FirebaseFeedback;
+import xyz.kandrac.kappka.data.firebase.References;
 import xyz.kandrac.kappka.utils.DateUtils;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -89,10 +97,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_select_clear: {
+            case R.id.action_select_clear:
                 fragment.clearType();
                 return true;
-            }
             case R.id.action_select_eat:
                 fragment.setType(Contract.Activities.ACTIVITY_EAT);
                 return true;
@@ -101,6 +108,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return true;
             case R.id.action_select_poop:
                 fragment.setType(Contract.Activities.ACTIVITY_POOP);
+                return true;
+            case R.id.action_feedback:
+
+                final EditText edittext = new EditText(this);
+
+                new AlertDialog.Builder(this)
+                        .setMessage(R.string.feedback_message)
+                        .setTitle(R.string.feedback_title)
+                        .setView(edittext)
+                        .setPositiveButton(R.string.action_send, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                FirebaseFeedback feedback = new FirebaseFeedback();
+                                feedback.comment = edittext.getText().toString();
+                                FirebaseDatabase.getInstance()
+                                        .getReference()
+                                        .child(References.FEEDBACK_REFERENCE)
+                                        .push()
+                                        .setValue(feedback);
+                                Toast.makeText(MainActivity.this, R.string.feedback_thanks, Toast.LENGTH_SHORT).show();
+                            }
+                        }).setNegativeButton(R.string.action_cancel, null)
+                        .show();
+
                 return true;
         }
         return super.onOptionsItemSelected(item);
