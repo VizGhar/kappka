@@ -7,13 +7,14 @@ repositories {
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.1"
+    buildToolsVersion "25.0.2"
+
     defaultConfig {
         applicationId "xyz.kandrac.kappka"
         minSdkVersion 16
         targetSdkVersion 25
-        versionCode 3
-        versionName "0.2"
+        versionCode 4
+        versionName "0.3"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -38,7 +39,12 @@ android {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            manifestPlaceholders = [databaseAuthority: "xyz.kandrac.kappka"]
+            manifestPlaceholders = [databaseAuthority: "xyz.kandrac.kappka",
+                                    crashlyticsApiKey: project.property("crashlyticsApiKey").toString()]
+
+            ext {
+                betaDistributionEmailsFilePath = "app/crashlyticsAssets/release_emails.txt"
+            }
 
             buildConfigField 'String', 'DATABASE_AUTHORITY', '"xyz.kandrac.kappka"'
         }
@@ -50,8 +56,8 @@ android {
                                     crashlyticsApiKey: project.property("crashlyticsApiKey").toString()]
 
             ext {
-                betaDistributionReleaseNotesFilePath="app/crashlyticsAssets/beta_distribution_release_notes.txt"
-                betaDistributionEmailsFilePath="app/crashlyticsAssets/beta_distribution_emails.txt"
+                betaDistributionReleaseNotesFilePath = "app/crashlyticsAssets/beta_distribution_release_notes.txt"
+                betaDistributionEmailsFilePath = "app/crashlyticsAssets/beta_distribution_emails.txt"
             }
 
             buildConfigField 'String', 'DATABASE_AUTHORITY', '"xyz.kandrac.kappka.debug"'
