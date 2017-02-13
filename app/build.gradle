@@ -17,7 +17,6 @@ android {
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        buildConfigField 'String', 'DATABASE_AUTHORITY', '"xyz.kandrac.kappka"'
 
     }
 
@@ -40,6 +39,8 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             manifestPlaceholders = [databaseAuthority: "xyz.kandrac.kappka"]
+
+            buildConfigField 'String', 'DATABASE_AUTHORITY', '"xyz.kandrac.kappka"'
         }
         debug {
             applicationIdSuffix ".debug"
@@ -53,6 +54,7 @@ android {
                 betaDistributionEmailsFilePath="app/crashlyticsAssets/beta_distribution_emails.txt"
             }
 
+            buildConfigField 'String', 'DATABASE_AUTHORITY', '"xyz.kandrac.kappka.debug"'
         }
     }
 }

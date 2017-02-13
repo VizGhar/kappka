@@ -17,6 +17,7 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -179,6 +180,12 @@ public class AddFragment extends DialogFragment implements View.OnClickListener 
                 resetFromButton();
                 break;
             case R.id.save:
+                if (type == Contract.Activities.ACTIVITY_SLEEP) {
+                    if (timeFromCalendar.getTimeInMillis() > timeToCalendar.getTimeInMillis()) {
+                        Toast.makeText(getActivity(), R.string.invalid_time, Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                }
 
                 ContentValues cv = new ContentValues();
                 cv.put(Contract.ActivityColumns.ACTIVITY_DESCRIPTION, description.getText().toString());
