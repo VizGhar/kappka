@@ -5,15 +5,17 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".Kappka"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:name=".Kappka"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,8 +32,7 @@
 
         <meta-data
             android:name="io.fabric.ApiKey"
-            android:value="${crashlyticsApiKey}"
-            />
+            android:value="${crashlyticsApiKey}" />
     </application>
 
 </manifest>
