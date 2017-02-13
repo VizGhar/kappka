@@ -11,9 +11,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.google.firebase.database.FirebaseDatabase;
@@ -26,6 +28,7 @@ import xyz.kandrac.kappka.data.Contract;
 import xyz.kandrac.kappka.data.firebase.FirebaseFeedback;
 import xyz.kandrac.kappka.data.firebase.References;
 import xyz.kandrac.kappka.utils.DateUtils;
+import xyz.kandrac.kappka.utils.DisplayUtils;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -112,11 +115,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.action_feedback:
 
                 final EditText edittext = new EditText(this);
+                FrameLayout container = new FrameLayout(this);
+                FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                params.leftMargin = DisplayUtils.dpToPx(this, 16);
+                params.rightMargin = DisplayUtils.dpToPx(this, 16);
+                edittext.setLayoutParams(params);
+                container.addView(edittext);
 
                 new AlertDialog.Builder(this)
                         .setMessage(R.string.feedback_message)
                         .setTitle(R.string.feedback_title)
-                        .setView(edittext)
+                        .setView(container)
                         .setPositiveButton(R.string.action_send, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
                                 FirebaseFeedback feedback = new FirebaseFeedback();

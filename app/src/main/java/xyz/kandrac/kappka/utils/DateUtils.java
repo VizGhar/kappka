@@ -17,7 +17,7 @@ public final class DateUtils {
     }
 
     public static final DateFormat TIME_FORMAT = SimpleDateFormat.getTimeInstance(DateFormat.SHORT, Locale.getDefault());
-    public static final DateFormat DATE_FORMAT = SimpleDateFormat.getDateInstance(DateFormat.DATE_FIELD, Locale.getDefault());
+    public static final DateFormat DATE_FORMAT = SimpleDateFormat.getDateInstance(DateFormat.DEFAULT, Locale.getDefault());
     public static final DateFormat DATE_FORMAT_2 = new SimpleDateFormat("dd.MM.", Locale.getDefault());
 
     public static String getDateFormatted(long dateMilis) {
