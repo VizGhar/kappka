@@ -4,12 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="48dp"
+    android:layout_height="wrap_content"
     android:layout_margin="4dp">
 
     <android.support.v7.widget.GridLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:columnCount="3"
         app:rowCount="2">
 
@@ -18,6 +18,7 @@
             android:layout_width="8dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
+            app:layout_gravity="fill"
             app:layout_rowSpan="2"
             tools:background="@color/average" />
 
@@ -25,6 +26,7 @@
             android:id="@+id/item_time"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp"
             android:drawableLeft="@drawable/ic_clock"
             android:drawablePadding="16dp"
             android:drawableStart="@drawable/ic_clock"
@@ -34,26 +36,27 @@
             app:layout_column="1"
             app:layout_gravity="fill"
             app:layout_row="0"
-            app:layout_rowWeight="1"
             tools:text="18:15" />
 
         <TextView
             android:id="@+id/item_desc"
+            android:layout_width="0dp"
+            android:layout_marginBottom="8dp"
             android:layout_marginEnd="16dp"
             android:layout_marginLeft="32dp"
             android:layout_marginRight="16dp"
             android:layout_marginStart="32dp"
             android:ellipsize="end"
             android:gravity="center_vertical"
-            android:maxLines="1"
             app:layout_column="1"
             app:layout_gravity="fill"
             app:layout_row="1"
             app:layout_rowWeight="1"
-            tools:text="Pekne z obidvou prsou" />
+            tools:text="Pekne z obidvou prsou. bla labdflbadfbmadfbkbl badfl" />
 
         <ImageView
             android:id="@+id/item_image"
+            android:layout_margin="8dp"
             android:padding="8dp"
             app:layout_column="2"
             app:layout_gravity="center_vertical"
