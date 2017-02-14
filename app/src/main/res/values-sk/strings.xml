@@ -23,6 +23,7 @@
     <string name="main_tab_poop">Kakanie</string>
     <string name="main_tab_sleep">Spinkanie</string>
     <string name="invalid_time">Nesprávny časový úsek. Skontrolujte začiatok a koniec činnosti</string>
+    <string name="action_edit">Upraviť</string>
 
     <string-array name="activity_score">
         <item>Ohodnotenie aktivity</item>

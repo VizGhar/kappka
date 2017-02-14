@@ -3,6 +3,7 @@ package xyz.kandrac.kappka;
 import android.app.TimePickerDialog;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -32,6 +33,7 @@ import static android.view.View.GONE;
  */
 public class AddFragment extends DialogFragment implements View.OnClickListener {
 
+    public static final String ARGUMENT_ACTIVITY_ID = "aid";
     public static final String ARGUMENT_ACTIVITY_TYPE = "type";
     public static final String ARGUMENT_TIME = "time";
 
@@ -54,6 +56,9 @@ public class AddFragment extends DialogFragment implements View.OnClickListener 
     Calendar timeToCalendar;
 
     int type;
+    long activityId;
+
+    boolean isEdit;
 
     public static AddFragment getInstance(@ActivityType int activityType, long displayTime) {
         AddFragment result = new AddFragment();
@@ -64,9 +69,30 @@ public class AddFragment extends DialogFragment implements View.OnClickListener 
         return result;
     }
 
+    public static AddFragment getInstance(long activityId) {
+        AddFragment result = new AddFragment();
+        Bundle args = new Bundle();
+        args.putLong(ARGUMENT_ACTIVITY_ID, activityId);
+        result.setArguments(args);
+        return result;
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments().containsKey(ARGUMENT_ACTIVITY_ID)) {
+            createEditFragment();
+        } else {
+            createAddFragment();
+        }
+    }
+
+    private void createEditFragment() {
+        activityId = getArguments().getLong(ARGUMENT_ACTIVITY_ID);
+        isEdit = true;
+    }
+
+    private void createAddFragment() {
         type = getArguments().getInt(ARGUMENT_ACTIVITY_TYPE);
 
         long time = getArguments().getLong(ARGUMENT_TIME);
@@ -81,6 +107,7 @@ public class AddFragment extends DialogFragment implements View.OnClickListener 
         timeFromCalendar.set(Calendar.YEAR, display.get(Calendar.YEAR));
 
         timeToCalendar.setTimeInMillis(timeFromCalendar.getTimeInMillis());
+        isEdit = false;
     }
 
     @Nullable
@@ -104,6 +131,33 @@ public class AddFragment extends DialogFragment implements View.OnClickListener 
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        if (isEdit) {
+            onViewCreatedEdit();
+        } else {
+            onViewCreatedAdd();
+        }
+    }
+
+    private void onViewCreatedEdit() {
+        Cursor cursor = getActivity().getContentResolver().query(Contract.Activities.buildActivityUri(activityId), null, null, null, null);
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+
+                timeFromCalendar = Calendar.getInstance();
+                timeToCalendar = Calendar.getInstance();
+
+                timeFromCalendar.setTimeInMillis(cursor.getLong(cursor.getColumnIndex(Contract.ActivityColumns.ACTIVITY_TIME_FROM)));
+                timeToCalendar.setTimeInMillis(cursor.getLong(cursor.getColumnIndex(Contract.ActivityColumns.ACTIVITY_TIME_TO)));
+                score.setSelection(cursor.getInt(cursor.getColumnIndex(Contract.ActivityColumns.ACTIVITY_SCORE)));
+                description.setText(cursor.getString(cursor.getColumnIndex(Contract.ActivityColumns.ACTIVITY_DESCRIPTION)));
+                type = cursor.getInt(cursor.getColumnIndex(Contract.ActivityColumns.ACTIVITY_TYPE));
+            }
+            cursor.close();
+        }
+        onViewCreatedAdd();
+    }
+
+    private void onViewCreatedAdd() {
 
         activityName.setText(getActivityName(type, getActivity()));
         timeFrom.setOnClickListener(this);
@@ -194,7 +248,12 @@ public class AddFragment extends DialogFragment implements View.OnClickListener 
                 if (type == Contract.Activities.ACTIVITY_SLEEP)
                     cv.put(Contract.ActivityColumns.ACTIVITY_TIME_TO, timeToCalendar.getTimeInMillis());
                 cv.put(Contract.ActivityColumns.ACTIVITY_TYPE, type);
-                getActivity().getContentResolver().insert(Contract.Activities.CONTENT_URI, cv);
+
+                if (isEdit) {
+                    getActivity().getContentResolver().update(Contract.Activities.buildActivityUri(activityId), cv, null, null);
+                } else {
+                    getActivity().getContentResolver().insert(Contract.Activities.CONTENT_URI, cv);
+                }
                 dismiss();
                 break;
         }

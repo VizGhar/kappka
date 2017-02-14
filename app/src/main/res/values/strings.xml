@@ -31,6 +31,7 @@
     <string name="feedback_title">Send feedback</string>
     <string name="action_send">Send</string>
     <string name="feedback_thanks">Your feedback has been sent</string>
+    <string name="action_edit">Edit</string>
 
     <string-array name="activity_score">
         <item>Activity rating</item>

@@ -1,16 +1,16 @@
 package xyz.kandrac.kappka;
 
-import android.app.Activity;
 import android.app.LoaderManager;
 import android.content.CursorLoader;
-import android.content.DialogInterface;
 import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
+import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -33,7 +33,7 @@ import static xyz.kandrac.kappka.utils.DateUtils.TIME_FORMAT;
  */
 public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder> implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    private Activity activity;
+    private FragmentActivity activity;
 
     private int mLoaderId;                          // Loader id to be used with queries
     private Cursor mCursor;                         // Cursor with current data
@@ -45,7 +45,7 @@ public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder> im
     private String dateToText;
     private String typeText;
 
-    public BabyAdapter(int loaderId, Activity activity) {
+    public BabyAdapter(int loaderId, FragmentActivity activity) {
         long time = DateUtils.getCurrentDateMilis();
         this.activity = activity;
         mLoaderId = loaderId;
@@ -102,12 +102,12 @@ public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder> im
     public void onBindViewHolder(ViewHolder holder, int position) {
         mCursor.moveToPosition(position);
 
-        String description = mCursor.getString(mCursor.getColumnIndex(Contract.ActivityColumns.ACTIVITY_DESCRIPTION));
+        final String description = mCursor.getString(mCursor.getColumnIndex(Contract.ActivityColumns.ACTIVITY_DESCRIPTION));
         final long id = mCursor.getLong(mCursor.getColumnIndex(Contract.ActivityColumns.ACTIVITY_ID));
-        int type = mCursor.getInt(mCursor.getColumnIndex(Contract.ActivityColumns.ACTIVITY_TYPE));
-        int score = mCursor.getInt(mCursor.getColumnIndex(Contract.ActivityColumns.ACTIVITY_SCORE));
-        long from = mCursor.getLong(mCursor.getColumnIndex(Contract.ActivityColumns.ACTIVITY_TIME_FROM));
-        long to = mCursor.getLong(mCursor.getColumnIndex(Contract.ActivityColumns.ACTIVITY_TIME_TO));
+        final int type = mCursor.getInt(mCursor.getColumnIndex(Contract.ActivityColumns.ACTIVITY_TYPE));
+        final int score = mCursor.getInt(mCursor.getColumnIndex(Contract.ActivityColumns.ACTIVITY_SCORE));
+        final long from = mCursor.getLong(mCursor.getColumnIndex(Contract.ActivityColumns.ACTIVITY_TIME_FROM));
+        final long to = mCursor.getLong(mCursor.getColumnIndex(Contract.ActivityColumns.ACTIVITY_TIME_TO));
 
         holder.description.setText(description);
 
@@ -152,16 +152,23 @@ public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder> im
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new AlertDialog.Builder(activity)
-                        .setTitle(R.string.action_delete)
-                        .setMessage(R.string.delete_activity)
-                        .setNegativeButton(R.string.action_cancel, null)
-                        .setPositiveButton(R.string.action_delete, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
+                final PopupMenu popup = new PopupMenu(activity, view);
+                popup.inflate(R.menu.menu_item);
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.action_delete:
                                 activity.getContentResolver().delete(Contract.Activities.buildActivityUri(id), null, null);
-                            }
-                        }).show();
+                                return true;
+                            case R.id.action_edit:
+                                AddFragment.getInstance(id).show(activity.getSupportFragmentManager(), null);
+                                return true;
+                        }
+                        return false;
+                    }
+                });
+                popup.show();
             }
         });
     }

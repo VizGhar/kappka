@@ -64,6 +64,11 @@ public class DatabaseProvider extends ContentProvider {
                 qb.setTables(Database.Tables.ACTIVITIES);
                 sortOrder = sortOrder == null ? Contract.Activities.DEFAULT_SORT : sortOrder;
                 break;
+            case ACTIVITY:
+                qb.setTables(Database.Tables.ACTIVITIES);
+                selection = Contract.ActivityColumns.ACTIVITY_ID + " = ?";
+                selectionArgs = new String[]{Long.toString(Contract.Activities.getActivityId(uri))};
+                break;
             default:
                 throw new IllegalArgumentException("Unknown URI " + uri);
         }
