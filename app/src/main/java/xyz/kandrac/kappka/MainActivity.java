@@ -4,7 +4,6 @@ import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.internal.NavigationMenu;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -32,9 +31,7 @@ import xyz.kandrac.kappka.utils.DisplayUtils;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private ViewPager mViewPager;
     private Button date;
-    private FabSpeedDial fab;
     private ActivitiesFragment fragment;
 
     private long displayTime = DateUtils.getCurrentDateMilis();
@@ -46,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        fab = (FabSpeedDial) findViewById(R.id.fab_btn);
+        FabSpeedDial fab = (FabSpeedDial) findViewById(R.id.fab_btn);
         date = (Button) findViewById(R.id.main_date);
         findViewById(R.id.main_date_increment).setOnClickListener(this);
         findViewById(R.id.main_date_decrement).setOnClickListener(this);

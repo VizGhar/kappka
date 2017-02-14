@@ -1,37 +1,37 @@
 <resources>
     <string name="app_name">Kappka</string>
 
-    <string name="main_tab_eat">Eating</string>
-    <string name="main_tab_sleep">Sleeping</string>
-    <string name="main_tab_poop">Pooping</string>
-
+    <!-- formatting -->
     <string name="time_format">%s</string>
     <string name="time_format_from_to">%1$s - %2$s</string>
+
+    <!-- actions standard -->
+    <string name="action_edit">Edit</string>
+    <string name="action_send">Send</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_filter">Filter</string>
+    <string name="action_save">Save</string>
+    <string name="action_filter_clear">Clear filter</string>
+
+    <!-- actions not standard-->
     <string name="action_add_eat">Eating</string>
-    <string name="action_add_sleep">Sleeping</string>
     <string name="action_add_poop">Pooping</string>
+    <string name="action_add_sleep">Sleeping</string>
+    <string name="action_select_eat">Filter eating</string>
+    <string name="action_select_poop">Filter pooping</string>
+    <string name="action_select_sleep">Filter sleeping</string>
+    <string name="action_send_feedback">Send Feedback</string>
+
+    <!-- Add/Edit Activity fragment -->
     <string name="activity_description_hint">Describe activity (optional)</string>
+    <string name="activity_end_hint">Activity end</string>
     <string name="activity_start_hint">Activity start</string>
     <string name="activity_start_hint_variant">Activity time</string>
-    <string name="activity_end_hint">Activity end</string>
-    <string name="action_save">Save</string>
-    <string name="action_filter">Filter</string>
-
-    <string name="action_select_eat">Filter eating</string>
-    <string name="action_select_sleep">Filter sleeping</string>
-    <string name="action_select_poop">Filter pooping</string>
-    <string name="action_select_clear">Clear filter</string>
-    <string name="action_delete">Delete</string>
-    <string name="delete_activity">Do you want to delete this activity?</string>
-    <string name="action_cancel">Cancel</string>
+    <string name="activity_eat">Eating</string>
+    <string name="activity_poop">Pooping</string>
+    <string name="activity_sleep">Sleeping</string>
     <string name="invalid_time">Incorrect times specified. Check start and end times</string>
-
-    <string name="action_feedback">Send Feedback</string>
-    <string name="feedback_message">Here you can post any suggestion you have in your mind. I\'ll do my best to pick the reasonable ones and incorporate them into the Kappka. Thank you.</string>
-    <string name="feedback_title">Send feedback</string>
-    <string name="action_send">Send</string>
-    <string name="feedback_thanks">Your feedback has been sent</string>
-    <string name="action_edit">Edit</string>
 
     <string-array name="activity_score">
         <item>Activity rating</item>
@@ -41,4 +41,10 @@
         <item>Below average</item>
         <item>Bad</item>
     </string-array>
+
+    <!-- Feedback -->
+    <string name="feedback_message">Here you can post any suggestion you have in your mind. I\'ll do my best to pick the reasonable ones and incorporate them into the Kappka. Thank you.</string>
+    <string name="feedback_thanks">Your feedback has been sent</string>
+    <string name="feedback_title">Send feedback</string>
+
 </resources>

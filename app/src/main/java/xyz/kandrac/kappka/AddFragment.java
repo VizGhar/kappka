@@ -184,11 +184,11 @@ public class AddFragment extends DialogFragment implements View.OnClickListener 
     private static String getActivityName(@ActivityType int type, @NonNull Context context) {
         switch (type) {
             case Contract.Activities.ACTIVITY_EAT:
-                return context.getString(R.string.main_tab_eat);
+                return context.getString(R.string.activity_eat);
             case Contract.Activities.ACTIVITY_POOP:
-                return context.getString(R.string.main_tab_poop);
+                return context.getString(R.string.activity_poop);
             case Contract.Activities.ACTIVITY_SLEEP:
-                return context.getString(R.string.main_tab_sleep);
+                return context.getString(R.string.activity_sleep);
         }
         return null;
     }

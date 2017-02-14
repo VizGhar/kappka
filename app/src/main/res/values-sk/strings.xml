@@ -1,32 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Kappka</string>
+
+    <!-- formatting -->
     <string name="time_format">%s</string>
     <string name="time_format_from_to">%1$s - %2$s</string>
-    <string name="action_add_eat">Papanie</string>
-    <string name="action_add_poop">Kakanie</string>
-    <string name="action_add_sleep">Spinkanie</string>
+
+    <!-- actions standard -->
+    <string name="action_edit">Upraviť</string>
+    <string name="action_send">Poslať</string>
     <string name="action_cancel">Zrušiť</string>
     <string name="action_delete">Zmazať</string>
     <string name="action_filter">Filter</string>
     <string name="action_save">Uložiť</string>
-    <string name="action_select_clear">Vymazať filter</string>
+    <string name="action_filter_clear">Vymazať filter</string>
+
+    <!-- actions not standard-->
+    <string name="action_add_eat">Papanie</string>
+    <string name="action_add_poop">Kakanie</string>
+    <string name="action_add_sleep">Spinkanie</string>
     <string name="action_select_eat">Iba papanie</string>
     <string name="action_select_poop">Iba kakanie</string>
     <string name="action_select_sleep">Iba spinkanie</string>
+    <string name="action_send_feedback">Pošli spätnú väzbu</string>
+
+    <!-- Add/Edit Activity fragment -->
     <string name="activity_description_hint">Popis činnosti (nepovinné)</string>
     <string name="activity_end_hint">Koniec činnosti</string>
     <string name="activity_start_hint">Začiatok činnosti</string>
     <string name="activity_start_hint_variant">Čas činnosti</string>
-    <string name="delete_activity">Chcete vymazať túto činnosť?</string>
-    <string name="main_tab_eat">Papanie</string>
-    <string name="main_tab_poop">Kakanie</string>
-    <string name="main_tab_sleep">Spinkanie</string>
+    <string name="activity_eat">Papanie</string>
+    <string name="activity_poop">Kakanie</string>
+    <string name="activity_sleep">Spinkanie</string>
     <string name="invalid_time">Nesprávny časový úsek. Skontrolujte začiatok a koniec činnosti</string>
-    <string name="action_edit">Upraviť</string>
 
     <string-array name="activity_score">
-        <item>Ohodnotenie aktivity</item>
+        <item>Ohodnotenie činnosti</item>
         <item>Veľmi dobré</item>
         <item>Dobré</item>
         <item>Priemerné</item>
@@ -34,9 +43,9 @@
         <item>Zlé</item>
     </string-array>
 
-    <string name="action_feedback">Pošli spätnú väzbu</string>
-    <string name="action_send">Poslať</string>
+    <!-- Feedback -->
     <string name="feedback_message">Tu môžete napísať akékoľvek návrhy a zlepšenia. Budem sa snažiť najdôležitejšie z nich zahrnúť do ďalších verzií Kappky. Ďakujem.</string>
     <string name="feedback_thanks">Vaša spätná väzba bola odoslaná</string>
     <string name="feedback_title">Poslať spätnú väzbu</string>
+
 </resources>

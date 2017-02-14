@@ -10,7 +10,7 @@
         <menu>
             <item
                 android:id="@+id/action_select_clear"
-                android:title="@string/action_select_clear" />
+                android:title="@string/action_filter_clear" />
             <item
                 android:id="@+id/action_select_eat"
                 android:title="@string/action_select_eat" />
@@ -25,7 +25,7 @@
 
     <item
         android:id="@+id/action_feedback"
-        android:title="@string/action_feedback"
+        android:title="@string/action_send_feedback"
         app:showAsAction="never" />
 
 </menu>
