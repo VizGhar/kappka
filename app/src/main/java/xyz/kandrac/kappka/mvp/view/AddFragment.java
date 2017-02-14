@@ -236,7 +236,10 @@ public class AddFragment extends DialogFragment implements View.OnClickListener 
                 break;
             case R.id.save:
                 if (type == Contract.Activities.ACTIVITY_SLEEP) {
-                    if (timeFromCalendar.getTimeInMillis() > timeToCalendar.getTimeInMillis()) {
+                    long from = timeFromCalendar.getTimeInMillis();
+                    long to = timeToCalendar.getTimeInMillis();
+
+                    if (from > to || to - from >= DateUtils.DAY_SPAN_MILIS) {
                         Toast.makeText(getActivity(), R.string.invalid_time, Toast.LENGTH_LONG).show();
                         return;
                     }

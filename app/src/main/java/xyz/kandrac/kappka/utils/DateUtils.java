@@ -12,6 +12,8 @@ import java.util.Locale;
 
 public final class DateUtils {
 
+    public static final long DAY_SPAN_MILIS = 24 * 60 * 60 * 1000;
+
     private DateUtils() {
 
     }
