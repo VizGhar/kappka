@@ -1,4 +1,4 @@
-package xyz.kandrac.kappka.data;
+package xyz.kandrac.kappka.mvp.model;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

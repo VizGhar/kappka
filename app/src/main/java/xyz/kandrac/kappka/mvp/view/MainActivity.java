@@ -1,4 +1,4 @@
-package xyz.kandrac.kappka;
+package xyz.kandrac.kappka.mvp.view;
 
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
@@ -23,9 +23,10 @@ import java.util.Calendar;
 
 import io.github.yavski.fabspeeddial.FabSpeedDial;
 import io.github.yavski.fabspeeddial.SimpleMenuListenerAdapter;
-import xyz.kandrac.kappka.data.Contract;
-import xyz.kandrac.kappka.data.firebase.FirebaseFeedback;
-import xyz.kandrac.kappka.data.firebase.References;
+import xyz.kandrac.kappka.R;
+import xyz.kandrac.kappka.mvp.model.Contract;
+import xyz.kandrac.kappka.mvp.model.firebase.FirebaseFeedback;
+import xyz.kandrac.kappka.mvp.model.firebase.References;
 import xyz.kandrac.kappka.utils.DateUtils;
 import xyz.kandrac.kappka.utils.DisplayUtils;
 

@@ -1,4 +1,4 @@
-package xyz.kandrac.kappka;
+package xyz.kandrac.kappka.mvp.view;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,7 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import xyz.kandrac.kappka.data.Contract.Activities.ActivityType;
+import xyz.kandrac.kappka.BabyAdapter;
+import xyz.kandrac.kappka.R;
+import xyz.kandrac.kappka.mvp.model.Contract.Activities.ActivityType;
 
 /**
  * Created by jan on 9.2.2017.

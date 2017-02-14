@@ -1,4 +1,4 @@
-package xyz.kandrac.kappka;
+package xyz.kandrac.kappka.mvp.view;
 
 import android.app.TimePickerDialog;
 import android.content.ContentValues;
@@ -22,8 +22,9 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
-import xyz.kandrac.kappka.data.Contract;
-import xyz.kandrac.kappka.data.Contract.Activities.ActivityType;
+import xyz.kandrac.kappka.R;
+import xyz.kandrac.kappka.mvp.model.Contract;
+import xyz.kandrac.kappka.mvp.model.Contract.Activities.ActivityType;
 import xyz.kandrac.kappka.utils.DateUtils;
 
 import static android.view.View.GONE;

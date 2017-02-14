@@ -1,4 +1,4 @@
-package xyz.kandrac.kappka.data.firebase;
+package xyz.kandrac.kappka.mvp.model.firebase;
 
 /**
  * References in firebase database

@@ -1,4 +1,4 @@
-package xyz.kandrac.kappka.data.firebase;
+package xyz.kandrac.kappka.mvp.model.firebase;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 import com.google.firebase.database.PropertyName;

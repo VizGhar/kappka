@@ -19,8 +19,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Date;
 
-import xyz.kandrac.kappka.data.Contract;
-import xyz.kandrac.kappka.data.Contract.Activities.ActivityType;
+import xyz.kandrac.kappka.mvp.model.Contract;
+import xyz.kandrac.kappka.mvp.model.Contract.Activities.ActivityType;
+import xyz.kandrac.kappka.mvp.view.AddFragment;
 import xyz.kandrac.kappka.utils.DateUtils;
 import xyz.kandrac.kappka.utils.DisplayUtils;
 

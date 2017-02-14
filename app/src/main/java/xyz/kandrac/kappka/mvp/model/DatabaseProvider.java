@@ -1,4 +1,4 @@
-package xyz.kandrac.kappka.data;
+package xyz.kandrac.kappka.mvp.model;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
