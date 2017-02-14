@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
+apply plugin: 'com.neenbedankt.android-apt'
 
 repositories {
     maven { url 'https://maven.fabric.io/public' }
@@ -7,19 +8,17 @@ repositories {
 
 //noinspection GroovyMissingReturnStatement
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
 
     defaultConfig {
         applicationId "xyz.kandrac.kappka"
-        minSdkVersion 16
-        targetSdkVersion 25
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
         versionCode 4
         versionName "0.3"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-
     }
 
     signingConfigs {
@@ -67,23 +66,57 @@ android {
             buildConfigField 'String', 'DATABASE_AUTHORITY', '"xyz.kandrac.kappka.debug"'
         }
     }
+
+    // Always show the result of every unit test, even if it passes.
+    testOptions.unitTests.all {
+        testLogging {
+            events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+        }
+    }
 }
 
+configurations.all {
+    // Facebook and Espresso conflicts
+    resolutionStrategy.force "com.android.support:support-annotations:$rootProject.supportLibraryVersion"
+    resolutionStrategy.force "com.android.support:customtabs:$rootProject.supportLibraryVersion"
+    resolutionStrategy.force "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
+    resolutionStrategy.force "com.android.support:palette-v7:$rootProject.supportLibraryVersion"
+}
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile 'com.google.firebase:firebase-database:9.2.1'
-    compile 'com.android.support:appcompat-v7:25.1.1'
-    compile "com.android.support:gridlayout-v7:25.1.1"
-    compile "com.android.support:cardview-v7:25.1.1"
-    compile 'com.android.support:design:25.1.1'
+
+    // App compat libraries
+    compile "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    compile "com.android.support:design:$rootProject.supportLibraryVersion"
+    compile "com.android.support:gridlayout-v7:$rootProject.supportLibraryVersion"
+    compile "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
+
+    // Firebase libraries
+    compile "com.google.firebase:firebase-database:$rootProject.firebaseVersion"
+
+    // Square libraries
+    compile 'com.jakewharton:butterknife:8.4.0'
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
+
     compile 'io.github.yavski:fab-speed-dial:1.0.6'
+
+    // Dagger
+    apt "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
+    compile "com.google.dagger:dagger:$rootProject.daggerVersion"
+    provided 'org.glassfish:javax.annotation:10.0-b28'
+
+    // Crashlytics
     compile('com.crashlytics.sdk.android:crashlytics:2.6.6@aar') {
         transitive = true;
     }
-    testCompile 'junit:junit:4.12'
+
+    // Dependencies for local unit tests
+    testCompile "junit:junit:$rootProject.ext.junitVersion"
+
+    androidTestCompile "com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion"
+    androidTestCompile "com.android.support.test.espresso:espresso-intents:$rootProject.espressoVersion"
+    androidTestCompile "com.android.support.test:runner:$rootProject.runnerVersion"
+    androidTestCompile "junit:junit:$rootProject.junitVersion"
 }
+
 apply plugin: 'com.google.gms.google-services'
