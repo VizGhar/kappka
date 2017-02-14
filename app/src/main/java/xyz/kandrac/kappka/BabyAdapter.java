@@ -198,9 +198,17 @@ public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder> im
 
         if (!TextUtils.isEmpty(dateFromText) && !TextUtils.isEmpty(dateToText)) {
 
+            // ( (timeStart today) OR (timeEnd today) )
+            selection.append("((");
             selection.append(Contract.ActivityColumns.ACTIVITY_TIME_FROM + " >= ?");
             selection.append(" AND " + Contract.ActivityColumns.ACTIVITY_TIME_FROM + " <= ?");
+            selection.append(") OR (");
+            selection.append(Contract.ActivityColumns.ACTIVITY_TIME_TO + " >= ?");
+            selection.append(" AND " + Contract.ActivityColumns.ACTIVITY_TIME_TO + " <= ?");
+            selection.append("))");
 
+            selectionArgs.add(dateFromText);
+            selectionArgs.add(dateToText);
             selectionArgs.add(dateFromText);
             selectionArgs.add(dateToText);
         }
@@ -227,14 +235,14 @@ public class BabyAdapter extends RecyclerView.Adapter<BabyAdapter.ViewHolder> im
         reset();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView time;
         private TextView description;
         private View indicator;
         private ImageView image;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
             time = (TextView) itemView.findViewById(R.id.item_time);
             description = (TextView) itemView.findViewById(R.id.item_desc);
