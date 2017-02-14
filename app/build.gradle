@@ -5,6 +5,7 @@ repositories {
     maven { url 'https://maven.fabric.io/public' }
 }
 
+//noinspection GroovyMissingReturnStatement
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -36,7 +37,9 @@ android {
     }
 
     buildTypes {
+        //noinspection GroovyMissingReturnStatement
         release {
+            signingConfig signingConfigs.release
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             manifestPlaceholders = [databaseAuthority: "xyz.kandrac.kappka",
@@ -48,6 +51,7 @@ android {
 
             buildConfigField 'String', 'DATABASE_AUTHORITY', '"xyz.kandrac.kappka"'
         }
+        //noinspection GroovyMissingReturnStatement
         debug {
             applicationIdSuffix ".debug"
             minifyEnabled false
